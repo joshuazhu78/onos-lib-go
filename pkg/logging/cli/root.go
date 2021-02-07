@@ -15,7 +15,7 @@
 package cli
 
 import (
-	"github.com/onosproject/onos-lib-go/pkg/cli"
+	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/cli"
 	"github.com/spf13/cobra"
 )
 

@@ -15,7 +15,7 @@
 package atomix
 
 import (
-	"github.com/onosproject/onos-lib-go/pkg/cluster"
+	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/cluster"
 )
 
 var serviceRegistry = &ServiceRegistry{

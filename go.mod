@@ -1,4 +1,4 @@
-module github.com/onosproject/onos-lib-go
+module gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go
 
 go 1.14
 
