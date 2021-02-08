@@ -64,6 +64,6 @@ log.SetLevel(logging.WarnLevel)
 
 
 
-[logging]: https://github.com/onosproject/onos-lib-go/tree/master/pkg/logging
+[logging]: https://gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/tree/master/pkg/logging
 [Zap]: https://godoc.org/go.uber.org/zap
 [Adaptive Radix Tree]: https://github.com/plar/go-adaptive-radix-tree

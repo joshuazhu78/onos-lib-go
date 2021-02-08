@@ -24,7 +24,7 @@ import (
 	"github.com/atomix/go-framework/pkg/atomix"
 	"github.com/atomix/go-framework/pkg/atomix/registry"
 	"github.com/atomix/go-local/pkg/atomix/local"
-	"github.com/onosproject/onos-lib-go/pkg/cluster"
+	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/cluster"
 	"google.golang.org/grpc"
 	"net"
 	"time"

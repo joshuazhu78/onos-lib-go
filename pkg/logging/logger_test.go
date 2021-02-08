@@ -15,7 +15,7 @@
 package logging
 
 import (
-	"github.com/onosproject/onos-lib-go/pkg/config"
+	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/config"
 	"testing"
 
 	"github.com/plar/go-adaptive-radix-tree"

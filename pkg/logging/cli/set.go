@@ -18,8 +18,8 @@ import (
 	"context"
 	"time"
 
-	api "github.com/onosproject/onos-lib-go/api/logging"
-	"github.com/onosproject/onos-lib-go/pkg/cli"
+	api "gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/api/logging"
+	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/cli"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
