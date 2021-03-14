@@ -1,4 +1,4 @@
-module gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go
+module gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go
 
 go 1.14
 
