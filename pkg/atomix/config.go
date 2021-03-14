@@ -16,7 +16,7 @@ package atomix
 
 import (
 	"fmt"
-	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/env"
+	"gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go/pkg/env"
 )
 
 const defaultPort = 5678

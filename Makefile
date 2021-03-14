@@ -7,7 +7,7 @@ ONOS_PROTOC_VERSION := v0.6.3
 
 test: # @HELP run the unit tests and source code validation
 test: deps license_check linters
-	go test gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/...
+	go test gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go/pkg/...
 
 coverage: # @HELP generate unit test coverage data
 coverage: deps linters license_check
@@ -26,8 +26,8 @@ license_check: # @HELP examine and ensure license headers exist
 	./../build-tools/licensing/boilerplate.py -v --rootdir=${CURDIR}
 
 protos: # @HELP compile the protobuf files (using protoc-go Docker)
-	docker run -it -v `pwd`:/go/src/gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go \
-		-w /go/src/gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go \
+	docker run -it -v `pwd`:/go/src/gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go \
+		-w /go/src/gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go \
 		--entrypoint build/bin/compile-protos.sh \
 		onosproject/protoc-go:${ONOS_PROTOC_VERSION}
 

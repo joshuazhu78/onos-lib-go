@@ -15,8 +15,8 @@
 package cli
 
 import (
-	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/cli"
 	"github.com/spf13/cobra"
+	"gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go/pkg/cli"
 )
 
 //var viper = viperapi.New()

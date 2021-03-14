@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"net"
 
-	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/certs"
-	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/logging"
+	"gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go/pkg/certs"
+	"gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go/pkg/logging"
 	"google.golang.org/grpc/credentials"
 
 	"google.golang.org/grpc"

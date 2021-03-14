@@ -16,8 +16,8 @@ package cli
 
 import (
 	"crypto/tls"
-	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/certs"
 	"github.com/spf13/cobra"
+	"gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go/pkg/certs"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 )

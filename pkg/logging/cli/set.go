@@ -18,10 +18,10 @@ import (
 	"context"
 	"time"
 
-	api "gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/api/logging"
-	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/cli"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
+	api "gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go/api/logging"
+	"gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go/pkg/cli"
 )
 
 func getSetCommand() *cobra.Command {

@@ -18,7 +18,7 @@ import (
 	"context"
 	"crypto/tls"
 	"fmt"
-	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/certs"
+	"gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go/pkg/certs"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 )

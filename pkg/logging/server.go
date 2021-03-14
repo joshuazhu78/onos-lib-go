@@ -17,8 +17,8 @@ package logging
 import (
 	"errors"
 
-	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/api/logging"
-	"gitlab.devtools.intel.com/ngs-syseng/onosproject/onos-lib-go/pkg/logging/service"
+	"gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go/api/logging"
+	"gitlab.devtools.intel.com/ngs-wsmac/onosproject/onos-lib-go/pkg/logging/service"
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
