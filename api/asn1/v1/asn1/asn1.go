@@ -5,8 +5,9 @@
 package asn1
 
 import (
-	"github.com/onosproject/onos-lib-go/pkg/errors"
 	"math"
+
+	"github.com/onosproject/onos-lib-go/pkg/errors"
 )
 
 // UpdateValue - replace the bytes value with values from a new []byte
@@ -52,4 +53,43 @@ func (m *BitString) TruncateValue() ([]byte, error) {
 	//fmt.Printf("Last byte after truncation is %x\n", truncBytes[len(truncBytes)-1])
 	m.Value = truncBytes
 	return m.Value, nil
+}
+
+func (b *BitString) GetBit(pos int) (bool, error) {
+	if pos >= int(b.GetLen()) || pos < 0 {
+		return false, errors.NewInvalid("pos %d is out of range [0,%d)", pos, b.GetLen())
+	}
+	B := b.GetValue()[len(b.GetValue())-1-int(pos/8)]
+	return ((B & (1 << (pos % 8))) != 0), nil
+}
+
+func (b *BitString) GetMaxBitOne() int {
+	var max int
+	for max = int(b.GetLen()) - 1; max >= 0; max-- {
+		if bb, err := b.GetBit(max); err == nil && bb {
+			break
+		}
+	}
+	return max
+}
+
+func (b *BitString) FromUint(value uint) {
+	mask := uint((1 << b.GetLen()) - 1)
+	v := value & mask
+	bytes := int(math.Ceil(float64(b.GetLen()) / 8.0))
+	for i := 0; i < bytes; i++ {
+		B := v & 0xff
+		b.Value[bytes-1-i] = byte(B)
+		v = v >> 8
+	}
+}
+
+func (b *BitString) ToUint() uint {
+	var v uint = 0
+	bytes := int(math.Ceil(float64(b.GetLen()) / 8.0))
+	for i := 0; i < bytes; i++ {
+		v = v << 8
+		v = v + uint(b.Value[i])
+	}
+	return v
 }

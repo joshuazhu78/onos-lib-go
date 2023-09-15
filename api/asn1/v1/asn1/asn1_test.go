@@ -5,8 +5,9 @@
 package asn1
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func Test_UpdateValue(t *testing.T) {
@@ -108,4 +109,44 @@ func Test_TruncateValue(t *testing.T) {
 	t.Logf("%x", newValue4)
 	assert.EqualValues(t, []byte{0x3f, 0xff, 0x80}, bs4.GetValue())
 	t.Logf("%x", bs4.GetValue())
+}
+
+func Test_BitOps(t *testing.T) {
+	r := &BitString{
+		Value: []byte{2},
+		Len:   4,
+	}
+	m := r.GetMaxBitOne()
+	assert.Equal(t, m, 1)
+
+	r = &BitString{
+		Value: []byte{7},
+		Len:   4,
+	}
+	m = r.GetMaxBitOne()
+	assert.Equal(t, m, 2)
+
+	r = &BitString{
+		Value: []byte{8},
+		Len:   4,
+	}
+	m = r.GetMaxBitOne()
+	assert.Equal(t, m, 3)
+
+	r = &BitString{
+		Value: []byte{2, 8},
+		Len:   10,
+	}
+	r.FromUint(10)
+	assert.Equal(t, []byte{0, 10}, r.GetValue())
+	r.Value[1] = 11
+	assert.Equal(t, uint(11), r.ToUint())
+
+	r = &BitString{
+		Value: []byte{2, 8},
+		Len:   10,
+	}
+	r.FromUint(1023)
+	assert.Equal(t, []byte{3, 255}, r.GetValue())
+	assert.Equal(t, uint(1023), r.ToUint())
 }
