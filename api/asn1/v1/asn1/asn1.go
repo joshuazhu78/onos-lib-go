@@ -73,15 +73,21 @@ func (b *BitString) GetMaxBitOne() int {
 	return max
 }
 
-func (b *BitString) FromUint(value uint) {
-	mask := uint((1 << b.GetLen()) - 1)
+func UintToBytes(value uint, len uint32) []byte {
+	mask := uint((1 << len) - 1)
 	v := value & mask
-	bytes := int(math.Ceil(float64(b.GetLen()) / 8.0))
-	for i := 0; i < bytes; i++ {
+	numByptes := int(math.Ceil(float64(len) / 8.0))
+	bytes := make([]byte, numByptes)
+	for i := 0; i < numByptes; i++ {
 		B := v & 0xff
-		b.Value[bytes-1-i] = byte(B)
+		bytes[numByptes-1-i] = byte(B)
 		v = v >> 8
 	}
+	return bytes
+}
+
+func (b *BitString) FromUint(value uint) {
+	b.Value = UintToBytes(value, b.GetLen())
 }
 
 func (b *BitString) ToUint() uint {
@@ -92,4 +98,17 @@ func (b *BitString) ToUint() uint {
 		v = v + uint(b.Value[i])
 	}
 	return v
+}
+
+func (b *BitString) AddUint(a uint) {
+	v := b.ToUint()
+	v = v + a
+	b.FromUint(v)
+}
+
+func NewBitString(value uint, len uint32) *BitString {
+	return &BitString{
+		Value: UintToBytes(value, len),
+		Len:   len,
+	}
 }

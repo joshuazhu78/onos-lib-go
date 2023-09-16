@@ -149,4 +149,6 @@ func Test_BitOps(t *testing.T) {
 	r.FromUint(1023)
 	assert.Equal(t, []byte{3, 255}, r.GetValue())
 	assert.Equal(t, uint(1023), r.ToUint())
+	r.AddUint(1)
+	assert.Equal(t, []byte{0, 0}, r.GetValue())
 }
