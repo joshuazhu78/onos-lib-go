@@ -106,6 +106,44 @@ func (b *BitString) AddUint(a uint) {
 	b.FromUint(v)
 }
 
+func (b *BitString) SubBitString(start int, len uint32) *BitString {
+	numBytes := int(math.Ceil(float64(len) / 8.0))
+	v := make([]byte, numBytes)
+	bb := 0
+	BB := 0
+	var bitsFirstByte uint32
+	if len < uint32(numBytes*8) {
+		bitsFirstByte = len - (uint32(numBytes-1) * 8)
+		var B byte = 0
+		for ; bb < int(bitsFirstByte); bb++ {
+			bit, _ := b.GetBit(start + bb)
+			B = B << 1
+			if bit {
+				B = (B + byte(0x01))
+			}
+		}
+		v[BB] = B
+		BB = BB + 1
+	}
+	var B byte = 0
+	for ; bb < int(len); bb++ {
+		bit, _ := b.GetBit(start + bb)
+		B = B << 1
+		if bit {
+			B = (B + byte(0x01))
+		}
+		if (bb-int(bitsFirstByte))%8 == 7 {
+			v[BB] = B
+			B = 0
+			BB = BB + 1
+		}
+	}
+	return &BitString{
+		Len:   len,
+		Value: v,
+	}
+}
+
 func NewBitString(value uint, len uint32) *BitString {
 	return &BitString{
 		Value: UintToBytes(value, len),

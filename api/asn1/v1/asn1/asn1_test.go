@@ -5,6 +5,7 @@
 package asn1
 
 import (
+	"reflect"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -151,4 +152,29 @@ func Test_BitOps(t *testing.T) {
 	assert.Equal(t, uint(1023), r.ToUint())
 	r.AddUint(1)
 	assert.Equal(t, []byte{0, 0}, r.GetValue())
+}
+
+func Test_SubBitString(t *testing.T) {
+	r := &BitString{
+		Value: []byte{2},
+		Len:   4,
+	}
+	s := r.SubBitString(1, 1)
+	assert.True(t, reflect.DeepEqual(s, &BitString{Len: 1, Value: []byte{1}}))
+
+	r = &BitString{
+		Value: []byte{0x6, 0x03},
+		Len:   11,
+	}
+	s = r.SubBitString(0, 2)
+	assert.True(t, reflect.DeepEqual(s, &BitString{Len: 2, Value: []byte{3}}))
+	s = r.SubBitString(9, 2)
+	assert.True(t, reflect.DeepEqual(s, &BitString{Len: 2, Value: []byte{3}}))
+
+	r = &BitString{
+		Value: []byte{0x07, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff},
+		Len:   139,
+	}
+	s = r.SubBitString(128, 11)
+	assert.True(t, reflect.DeepEqual(s, &BitString{Len: 11, Value: []byte{0x07, 0xff}}))
 }
